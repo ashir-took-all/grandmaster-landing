@@ -3,22 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grandmaster Intel | Waitlist</title>
+    <title>Grandmaster Intel | Executive Strategy Simulation</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://getlaunchlist.com/js/widget-diy.js" defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                    colors: {
+                        'dash-bg': '#0B0E14',
+                        'dash-panel': 'rgba(26, 30, 38, 0.6)',
+                        'dash-border': 'rgba(255, 255, 255, 0.08)',
+                        'dash-accent': '#3B82F6',
+                        'dash-gold': '#A38652',
+                        'dash-text': '#e2e8f0',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-dash-bg text-dash-text font-sans selection:bg-dash-accent selection:text-white overflow-x-hidden;
+            }
+        }
+        .bg-grid {
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+        .glass-panel {
+            @apply bg-dash-panel backdrop-blur-md border border-dash-border;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+    </style>
 </head>
-<body class="bg-black text-white flex flex-col items-center justify-center min-h-screen p-6">
-    <div class="max-w-2xl text-center">
-        <h1 class="text-5xl font-bold mb-4">Understand Geopolitics better than your school.</h1>
-        <p class="text-gray-400 mb-8 text-xl">The world's first AI-driven strategic intelligence simulation.</p>
-        
-        <form action="https://getlaunchlist.com/s/4Rp2qv" method="POST" class="launchlist-form flex gap-2">
-            <input type="email" name="email" placeholder="Enter your strategist email" required 
-                   class="bg-zinc-900 border border-zinc-700 p-3 rounded-lg flex-1 focus:outline-none focus:border-blue-500">
-            <button type="submit" class="bg-white text-black font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transition">
-                Join Waitlist
-            </button>
-        </form>
-    </div>
+<body>
+    <div class="fixed inset-0 bg-grid pointer-events-none opacity-40"></div>
+    
+    <nav class="relative z-10 max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-dash-accent/10 border border-dash-accent/30 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                <span class="text-dash-accent font-bold">G</span>
+            </div>
+            <span class="font-mono font-bold tracking-tighter text-xl uppercase">Grandmaster Intel</span>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-32 flex flex-col items-center text-center">
+        <div class="space-y-6 hero-gradient py-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dash-accent/10 border border-dash-accent/20 text-dash-accent text-[10px] font-mono uppercase tracking-widest mb-4">
+                Next-Gen Strategy Simulation
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-white">
+                Understand Geopolitics <br/> <span class="text-dash-accent italic">better than your school.</span>
+            </h1>
+            
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                The first AI-powered strategy engine that turns Chess into a high-stakes global market simulator.
+            </p>
+        </div>
+
+        <div class="mt-24 w-full">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-dash-accent to-dash-gold rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                <div class="relative glass-panel rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="/dashboard-preview.png" alt="Grandmaster Dashboard" class="w-full h-auto opacity-90 group-hover:opacity-100 transition duration-500">
+                </div>
+            </div>
+        </div>
+
+        <div id="waitlist-section" class="mt-32 w-full max-w-2xl mx-auto glass-panel p-12 rounded-3xl border-dash-accent/20 relative">
+            
+            <div id="form-container">
+                <h2 class="text-3xl font-bold text-white mb-4">Ditch the textbooks.</h2>
+                <p class="text-slate-400 mb-8">Join the exclusive waitlist for early access.</p>
+
+                <form action="https://getlaunchlist.com/s/4Rp2qv" method="POST" class="launchlist-form flex flex-col md:flex-row gap-3">
+                    <input type="hidden" name="_redir" value="https://grandmaster-landing.vercel.app/?success=true">
+                    <input type="email" name="email" required placeholder="Enter your executive email"
+                           class="flex-1 bg-dash-bg/50 border border-dash-border rounded-xl px-6 py-4 focus:outline-none focus:border-dash-accent text-white">
+                    <button type="submit" class="px-8 py-4 bg-dash-accent text-white rounded-xl font-bold hover:bg-blue-600 transition-all shadow-lg">
+                        Secure Access
+                    </button>
+                </form>
+            </div>
+
+            <div id="success-container" class="hidden py-4">
+                <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-2">Access Pending...</h2>
+                <p class="text-slate-400 mb-8">You are now on the elite strategist shortlist.</p>
+                
+                <div class="glass-panel p-1 rounded-2xl overflow-hidden shadow-2xl">
+                    <iframe src="https://getlaunchlist.com/w/e/4Rp2qv/leaderboard" style="width: 100%; border: none; height: 450px;" scrolling="yes"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('form-container').classList.add('hidden');
+                document.getElementById('success-container').classList.remove('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
