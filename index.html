@@ -59,7 +59,7 @@
             <div class="w-10 h-10 bg-dash-accent/10 border border-dash-accent/30 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.2)]">
                 <span class="text-dash-accent font-bold">G</span>
             </div>
-            <span class="font-mono font-bold tracking-tighter text-xl uppercase">Grandmaster Intel</span>
+            <span class="font-mono font-bold tracking-tighter text-xl uppercase tracking-widest">Grandmaster Intel</span>
         </div>
     </nav>
 
@@ -81,8 +81,16 @@
         <div class="mt-24 w-full">
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-dash-accent to-dash-gold rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
-                <div class="relative glass-panel rounded-2xl overflow-hidden shadow-2xl">
-                    <img src="/dashboard-preview.png" alt="Grandmaster Dashboard" class="w-full h-auto opacity-90 group-hover:opacity-100 transition duration-500">
+                <div class="relative glass-panel rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                    <img 
+                        src="dashboard-preview.png" 
+                        alt="Grandmaster Dashboard Preview" 
+                        class="w-full h-auto opacity-95 group-hover:opacity-100 transition duration-500"
+                        onerror="this.style.display='none'; document.getElementById('image-fallback').classList.remove('hidden');"
+                    />
+                    <div id="image-fallback" class="hidden py-40 bg-zinc-900 flex items-center justify-center text-zinc-600 font-mono italic">
+                        [ Strategic Intelligence Dashboard Loading... ]
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,32 +98,36 @@
         <div id="waitlist-section" class="mt-32 w-full max-w-2xl mx-auto glass-panel p-12 rounded-3xl border-dash-accent/20 relative">
             
             <div id="form-container">
-                <h2 class="text-3xl font-bold text-white mb-4">Ditch the textbooks.</h2>
-                <p class="text-slate-400 mb-8">Join the exclusive waitlist for early access.</p>
+                <h2 class="text-3xl font-bold text-white mb-4 leading-tight">Ditch the textbooks. Join the exclusive waitlist.</h2>
+                <p class="text-slate-400 mb-10 text-lg">Secure your rank in the global strategist queue.</p>
 
                 <form action="https://getlaunchlist.com/s/4Rp2qv" method="POST" class="launchlist-form flex flex-col md:flex-row gap-3">
                     <input type="hidden" name="_redir" value="https://grandmaster-landing.vercel.app/?success=true">
                     <input type="email" name="email" required placeholder="Enter your executive email"
-                           class="flex-1 bg-dash-bg/50 border border-dash-border rounded-xl px-6 py-4 focus:outline-none focus:border-dash-accent text-white">
-                    <button type="submit" class="px-8 py-4 bg-dash-accent text-white rounded-xl font-bold hover:bg-blue-600 transition-all shadow-lg">
+                           class="flex-1 bg-dash-bg/50 border border-dash-border rounded-xl px-6 py-4 focus:outline-none focus:border-dash-accent text-white transition-all">
+                    <button type="submit" class="px-8 py-4 bg-dash-accent text-white rounded-xl font-bold hover:bg-blue-600 transition-all shadow-lg shadow-dash-accent/20">
                         Secure Access
                     </button>
                 </form>
             </div>
 
-            <div id="success-container" class="hidden py-4">
+            <div id="success-container" class="hidden py-4 animate-in fade-in zoom-in duration-500">
                 <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
                 <h2 class="text-3xl font-bold text-white mb-2">Access Pending...</h2>
-                <p class="text-slate-400 mb-8">You are now on the elite strategist shortlist.</p>
+                <p class="text-slate-400 mb-8">Refer 3 peers to secure your Alpha invite immediately.</p>
                 
                 <div class="glass-panel p-1 rounded-2xl overflow-hidden shadow-2xl">
-                    <iframe src="https://getlaunchlist.com/w/e/4Rp2qv/leaderboard" style="width: 100%; border: none; height: 450px;" scrolling="yes"></iframe>
+                    <iframe src="https://getlaunchlist.com/w/e/4Rp2qv/leaderboard" style="width: 100%; border: none; height: 500px;" scrolling="yes"></iframe>
                 </div>
             </div>
         </div>
     </main>
+
+    <footer class="p-12 border-t border-zinc-900/50 text-center text-zinc-600 text-[10px] font-mono tracking-[0.3em] uppercase">
+        &copy; 2026 Grandmaster Intel // Global Strategy Protocol
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -123,6 +135,7 @@
             if (urlParams.get('success') === 'true') {
                 document.getElementById('form-container').classList.add('hidden');
                 document.getElementById('success-container').classList.remove('hidden');
+                document.getElementById('waitlist-section').scrollIntoView({ behavior: 'smooth' });
             }
         });
     </script>
